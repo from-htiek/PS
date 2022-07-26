@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -9,9 +10,10 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 /*
- * 2022.07.25
+ * 2022.07.26
  * 특정 거리의 도시 찾기
- * => 어디서 오류가 나는걸까?
+ * 정답이 오름차순 정렬을 해야만 해서 PQ로 풀었다가 틀렸다고 해서 일반적인 Q로 바꿔보았더니 통과
+ * N이 아주 클 때 시간초과가 나는걸까?
  */
 public class S2_18352 {	
 	public static void main(String[] args) throws IOException {
@@ -38,8 +40,8 @@ public class S2_18352 {
 		}
 		
 		boolean[] visitied = new boolean[n+1]; // 방문 체크
-		PriorityQueue<Integer> q = new PriorityQueue<>(); // 오름차순을 위한 PQ
-//		Queue<Integer> q = new LinkedList<>();
+//		PriorityQueue<Integer> q = new PriorityQueue<>(); // 오름차순을 위한 PQ
+		Queue<Integer> q = new LinkedList<>();
 		q.add(x); // 출발 번호 넣기
 		visitied[x] = true; 
 		
@@ -63,12 +65,24 @@ public class S2_18352 {
 		}
 		
 		int size = q.size();
+		List<Integer> result = new ArrayList<>();
 		if(size == 0) sb.append(-1); // 최단 거리가 k인 도시가 없음 
+		
 		else {
+			
 			while(!q.isEmpty()) {
-				sb.append(q.poll()).append("\n");
+//				sb.append(q.poll()).append("\n");
+				result.add(q.poll());
+			}
+			
+			Collections.sort(result);
+			
+			for(int r : result) {
+				sb.append(r).append("\n");
 			}
 		}
+		
+
 		
 		System.out.println(sb.toString());
 		

@@ -7,6 +7,7 @@ import java.util.StringTokenizer;
 /*
  * 2022.08.03
  * 트럭
+ * 완전히 틀렸다. 다시 풀어보자.
  */
 public class S1_13335 {
 	public static void main(String[] args) throws IOException{
@@ -28,7 +29,6 @@ public class S1_13335 {
 		int sum = trucks[idx]; 
 		while(true) {
 			cnt++; 
-			pos[idx]++; 
 			
 			if(pos[idx] > w) {
 				sum -= trucks[idx];

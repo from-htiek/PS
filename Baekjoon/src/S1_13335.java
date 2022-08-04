@@ -23,38 +23,6 @@ public class S1_13335 {
 			trucks[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		int[] pos = new int[n]; // 트럭 위치 체크 
-		int cnt = 0; // 최단 시간 
-		int idx = 0; // 위치 체크를 위한 index
-		int sum = trucks[idx]; 
-		while(true) {
-			cnt++; 
-			
-			if(pos[idx] > w) {
-				sum -= trucks[idx];
-				idx++;
-			}
-		
-			if(idx == n) break;
-			
-			if(pos[idx] == 0) {
-				pos[idx]++;
-				sum += trucks[idx];
-			}
-			
-			for(int i = 1; i < pos[idx]; i++) {
-				if(idx+i >= n) break;
-				if(sum + trucks[idx+i] <= l) {
-					pos[idx+i]++; 
-					sum += trucks[idx+i];
-				}
-			}
-			
-			
-		}
-		
-		System.out.println(Arrays.toString(pos));
-		System.out.println(cnt);
-		
+		// 방향이 아예 다른걸까?
 	}
 }

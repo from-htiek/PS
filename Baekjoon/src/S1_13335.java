@@ -5,9 +5,8 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /*
- * 2022.08.03
+ * 2022.08.05
  * 트럭
- * 완전히 틀렸다. 다시 풀어보자.
  */
 public class S1_13335 {
 	public static void main(String[] args) throws IOException{
@@ -23,6 +22,14 @@ public class S1_13335 {
 			trucks[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		// 방향이 아예 다른걸까?
-	}
+		
+		int cnt = 1; // 최단 시간
+		
+		while(true) {
+			cnt++; 
+		
+			// 음. 틀렸음.
+		}
+		
+	} 
 }

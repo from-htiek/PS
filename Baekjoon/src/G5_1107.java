@@ -14,6 +14,8 @@ import java.util.StringTokenizer;
  * 다만 index 0, 1은 조건에 따라 0이 고장이 나도 들어갈 수 있으니까 예외처리를 했다
  * 근데 굉장히ㅣㅣㅣㅣㅣㅣㅣㅣㅣ 오래 걸림. 
  * 0부터 999999까지 완탐을 하는게 더 효율적이다.. 왜냐면 난 최대값일때도 굳이 볼 필요없는 자리수를 하나 더 만드니까 ㅠ
+ * 나에게 가장 직관적이였던 코드
+ * https://www.acmicpc.net/source/22225533
  */
 public class G5_1107 {
 	public static class channel{

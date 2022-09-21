@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
  * 2022.09.19
  * 비슷한 단어
  */
-public class sS_2607 {
+public class S3_2607 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine()); // 단어의 개수

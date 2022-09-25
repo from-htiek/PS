@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 /*
- * 2022.09.23
+ * 2022.09.24
  * Java vs C++
  */
 public class S3_3613 {
@@ -15,19 +15,19 @@ public class S3_3613 {
 		boolean c = false;
 		for(int i = 0, size = str.length(); i < size; i++) {
 			char ch = str.charAt(i);
-			int num = ch - 'a';
-			if(num >= 0) sb.append(ch);
+//			int num = ch - 'a';
+			if(ch >= 'a') sb.append(ch);
 			else {
-				if(num == -2) {
+				if(ch == '_') {
 					java = true;
-					if(i+1 >= size || i == 0 || str.charAt(i+1) == '_' || c) {
+					if(i+1 >= size || i == 0 || str.charAt(i+1) == '_' || str.charAt(i+1) < 'a' || c) {
 						System.out.println("Error!");
 						return;
 					}
 					
 					sb.append((char)(str.charAt(i+1) - 32));
 					i++;
-				}else if(num >= -32 && num <= -7) {
+				}else if(ch >= 'A' && ch <= 'Z') {
 					c = true; 
 					if(i == 0 || java) {
 						System.out.println("Error!");
@@ -42,8 +42,8 @@ public class S3_3613 {
 			
 		}
 		
-		if(!java && !c) System.out.println("Error!");
-		else System.out.println(sb.toString());
+//		if(!java && !c) System.out.println("Error!");
+		System.out.println(sb.toString());
 		
 	}
 }

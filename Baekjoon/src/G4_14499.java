@@ -14,8 +14,8 @@ public class G4_14499 {
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		int n = Integer.parseInt(st.nextToken()); // 지도 세로 크기
 		int m = Integer.parseInt(st.nextToken()); // 지도 가로 크기
-		int x = Integer.parseInt(st.nextToken()); // 주사위 x 좌표
-		int y = Integer.parseInt(st.nextToken()); // 주사위 y 좌표
+		int y = Integer.parseInt(st.nextToken()); // 주사위 x 좌표
+		int x = Integer.parseInt(st.nextToken()); // 주사위 y 좌표
 		int k = Integer.parseInt(st.nextToken()); // 명령어 개수
 		
 		int[][] map = new int[n][m];

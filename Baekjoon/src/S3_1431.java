@@ -6,6 +6,7 @@ import java.util.Arrays;
 /*
  * 2022.09.26
  * 시리얼 번호
+ * Comparable, Comparator 안쓰니까 헷갈린다
  */
 public class S3_1431 {
 	public static class serial implements Comparable<serial>{
@@ -26,13 +27,22 @@ public class S3_1431 {
 		
 		@Override
 		public int compareTo(serial o) {
-			// TODO Auto-generated method stub
-			return 0;
+			
+			if(this.len == o.len) {
+				if(this.sum == o.sum) {
+					return this.str.compareTo(o.str);
+				}else {
+					return this.sum - o.sum;
+				}
+			}
+			
+			return this.len - o.len;
 		}
 	}
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
 		int n = Integer.parseInt(br.readLine()); // 기타의 개수
 		
 		serial[] guitar = new serial[n];
@@ -48,15 +58,11 @@ public class S3_1431 {
 			guitar[i] = new serial(str.length(), sum, str);
 		}
 		
-		for(serial s : guitar) {
-			System.out.println(s);
-		}
-		
-		System.out.println("------------");
-		
 		Arrays.sort(guitar);
 		for(serial s : guitar) {
-			System.out.println(s);
+			sb.append(s.str).append("\n");
 		}
+		
+		System.out.println(sb.toString());
 	}
 }

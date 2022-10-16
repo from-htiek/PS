@@ -30,55 +30,55 @@ public class Test_4014 {
 			
 			
 			int result = 0; 
-			for(int i = 0; i < n; i++) {
+			for(int i = 0; i < n; i++) { // 가로 체크 
 				int cnt = 1; 
-				boolean up = false;
-				boolean down = false;
+				boolean up = false; // 오르막
+				boolean down = false; // 내리막 
 				boolean flag = false;
 				int prev = map[i][0];
 				int max = map[i][0];
 				
 				for(int j = 1; j < n; j++) {
 					max = Math.max(max, map[i][j]);
-					if(Math.abs(prev - map[i][j]) >= 2) {
+					if(Math.abs(prev - map[i][j]) >= 2) { // 높이가 2이상 차이나면 불가능 
 						flag = true;
 						break;
 					}
 					
-					if(prev == map[i][j]) cnt++;
-					else {
-						if(prev - map[i][j] == 1) {							
-							if(down) {
-								if(cnt < x) {
+					if(prev == map[i][j]) cnt++; // 높이가 같을 때
+					else { // 높이가 다를 때 
+						if(prev - map[i][j] == 1) {	// 내리막일 때		
+							if(down) { // 그 전도 내리막이였다면 
+								if(cnt < x) { // 활주로 세울 수 있는지 체크 
 									flag = true;
 									break; 
 								}
 							}
 							
-							up = false;
+							up = false; 
 							down = true;
-						}else {
+						}else { // 오르막일 때 
 							up = true;
-							if(down) {
+							if(down) { // 그 전이 내리막이였다면 
 								down = false; 
-								if(cnt < 2 * x) {
+								if(cnt < 2 * x) { // 활주로 2개 세울 수 있는지 체크 
 									flag = true;
 									break; 
 								}	
-							}else {
-								if(cnt < x) {
+							}else { // 오르막이었다면 
+								if(cnt < x) { // 활주로 세울 수 있는지 체크
 									flag = true;
 									break; 
 								}
 							}
 						}
-						prev = map[i][j];
-						cnt = 1;
+						prev = map[i][j]; 
+						cnt = 1; // 다시 해당높이가 몇 개 있는지 체크 
 					}
 				}
 				
-				if(prev != max && down) {
-					if(cnt < x) {
+				if(prev != max && down) { // 최대 높이가 아니면서 내리막이면
+					if(cnt < x) { // 활주로 세울 수 있는지 체크 
 						flag = true;
 					}
 				}
@@ -90,7 +90,7 @@ public class Test_4014 {
 			
 			
 			
-			for(int i = 0; i < n; i++) {
+			for(int i = 0; i < n; i++) { // 세로 체크 
 				int cnt = 1; 
 				boolean up = false;
 				boolean down = false;
@@ -147,12 +147,10 @@ public class Test_4014 {
 
 			}
 			
-			System.out.println("#" + tc + " " + result);
-			
+			sb.append("#").append(tc).append(" ").append(result).append("\n");
+//			System.out.println("#" + tc + " " + result);
 		}
-	}
-	
-	public static void check(int y, int x) {
 		
+		System.out.println(sb.toString());
 	}
 }    

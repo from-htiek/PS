@@ -5,55 +5,52 @@ import java.util.Stack;
 
 
 /*
- * 2022.10.17
+ * 2022.10.18
  * 압축
- * 일단 숫자만 입력이 들어왔을 때 읽을 수 없음
- * ()가 중간에 닫혔을 때 '+'를 넣어줘야할 것 같음
+ * 꼭 써야할까 스택을? 반례가 도대체 뭐지? 
  */
 public class G5_1662 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String input = br.readLine();
-		Stack<Character> stack = new Stack<>();
+		int result = 0;
+		int cnt = 0; 
 		
-		boolean flag = false;
-		int cnt = 0;
-		for(int i = 0, size = input.length(); i < size; i++) {
-			char ch = input.charAt(i);
-			
-			if(ch >= '0' && ch <= '9') {
-				cnt++;
-			}else if(ch == '(') {
-
-				stack.add((char)(cnt-1 + '0'));
-				stack.add('+');
-				stack.add(input.charAt(i-1));
-				stack.add('*');
-				cnt = 0;
-			}else if(ch == ')') {
-				if(stack.peek() == '*' || stack.peek() == '+') stack.add((char)(cnt + '0'));
-				
-				while(true) {
-					char _ch1 = stack.pop();
-					char op = stack.pop();
-					char _ch2 = stack.pop();
-					
-					if(op == '+') {
-						stack.add((char) ((_ch1 - '0') + (_ch2 - '0') + '0'));
-					}else if(op == '*') {
-						stack.add((char) ((_ch1 - '0') * (_ch2 - '0') + '0'));
-						break;
+		boolean flag1 = false;
+		boolean flag2 = false;
+		boolean flag3 = false; 
+		for(int size = input.length(), i = size-1; i >= 0; i--) {
+			if(input.charAt(i) == ')') {
+				flag1 = true;
+			}
+			else if(input.charAt(i) == '(') {
+				flag1 = false;
+				flag2 = true;
+				if(input.charAt(i+1) == ')') flag3 = true;
+			}
+			else {
+				if(flag1) {
+					cnt++;
+				}
+				else if(flag2) {
+					flag2 = false;
+					if(!flag3 && cnt == 0) {
+						result *= input.charAt(i) - '0';
+						flag3 = false;
+						continue;
 					}
+					cnt *= input.charAt(i) - '0';
+					result += cnt;
+					cnt = 0;
+				}else {
+					result++; 
 				}
 				
 			}
-			
-			System.out.println(stack);
+//			System.out.println(result + " " + cnt);
 		}
 		
-//		while(!stack.isEmpty()) {
-//			
-//		}
+		System.out.println(result);
 
 	}
 }

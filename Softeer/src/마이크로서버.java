@@ -1,7 +1,9 @@
 import java.util.*;
 import java.io.*;
-
-
+/*
+ * 2022.11.04
+ * 마이크로서버
+ */
 public class 마이크로서버
 {
     public static void main(String args[]) throws IOException
@@ -19,9 +21,7 @@ public class 마이크로서버
                 list[i] = Integer.parseInt(st.nextToken());
             }
 
-            // System.out.println(Arrays.toString(list));
             Arrays.sort(list); // 정렬
-            // System.out.println(Arrays.toString(list));
 
             int sum = 0;
             boolean flag = false;
@@ -38,7 +38,7 @@ public class 마이크로서버
                     if(list[j] == 0) continue; // 이미 클러스터에 포함된 서비스라면 제외
 
                     if(sum + list[j] > 900) continue; // 합이 900을 넘으면 같은 서버 쓸 수 없으므로 제외
-                    else if(sum + list[j] > 600){ // 하나의 서버 사용해야 함
+                    else if(sum + list[j] > 600){ // 합이 600이상인 서비스들은 하나의 서버를 써야함
                         sum += list[j];
                         list[j] = 0; 
                         result++;

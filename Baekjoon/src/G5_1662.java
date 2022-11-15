@@ -14,38 +14,25 @@ import java.util.Stack;
  * 주말에 다시 꼭 풀어보자.
  */
 public class G5_1662 {
+	public static String input;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String input = br.readLine();
+        input = br.readLine();
         
-        int cnt = 0;
-        int result = 0;
-        int op = 0; 
-        boolean flag = false; 
-        
-        for(int size = input.length(), i = size-1; i >= 0; i--) {
-            if(input.charAt(i) == ')') {
-                op++;
-                flag = true;
-            }else if(input.charAt(i) == '(') {
-                op--; 
-                int num = cnt * (input.charAt(i-1) - '0');
-                if(op == 0) {
-                    result += num;
-                    flag = false;
-                    cnt = 0; 
-                }else {
-                    cnt = num;
-                }
-                i--;
-            }else {
-                if(flag) cnt++;
-                else result++; 
-            }
-            
-            System.out.println(result + " " + cnt);
-        }
-        
-        System.out.println(result);
+    }
+    
+    public static int func(int idx) {
+    	int cnt = 0;
+    	
+    	if(input.charAt(idx) == '(') {
+    		func(idx+1);
+    	}else if(input.charAt(idx) == ')') {
+    		return cnt;
+    	}else {
+    		cnt++; 
+    	}
+    	
+    	
+    	return cnt;
     }
 }

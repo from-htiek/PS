@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 /*
- * 2577
+ * 2022.11.23
  * 숫자의 개수
  */
 public class B2_2577 {

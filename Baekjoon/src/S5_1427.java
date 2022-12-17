@@ -15,10 +15,7 @@ public class S5_1427 {
 		
 		Arrays.sort(list);
 		
-		System.out.println(Arrays.toString(list));
-		
 		StringBuilder sb = new StringBuilder();
-		
 		for(int size = list.length, i = size-1; i >= 0; i--) {
 			sb.append(list[i]);
 		}
